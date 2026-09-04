@@ -1,133 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iron Temple - Old School Bodybuilding</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modo Carreira - Futebol Text Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho & Navegação -->
-    <header>
-        <div class="header-container">
-            <h1 class="logo">IRON TEMPLE</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#fisiologia">Fisiologia</a></li>
-                    <li><a href="#biomecanica">Biomecânica</a></li>
-                    <li><a href="#treinos">Divisões de Treino</a></li>
-                </ul>
-            </nav>
-            <button id="theme-toggle" aria-label="Alternar modo escuro">
-                <span class="icon-sun">☀️ Light</span>
-                <span class="icon-moon">🌙 Dark</span>
-            </button>
-        </div>
-    </header>
+  <header>
+    <h1>Modo Carreira Pro</h1>
+    <p>Tome as decisões certas para virar uma lenda do futebol!</p>
+  </header>
 
-    <!-- Banner Principal -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>A CIÊNCIA DO FERRO DE VOLTA ÀS RAÍZES</h2>
-            <p>Entenda o funcionamento do corpo humano sob a tensão mecânica do treino old school.</p>
+  <main class="container">
+    
+    <section class="match-card">
+      <div class="scoreboard">
+        <div class="team">
+          <img id="home-flag" src="https://flagcdn.com/w80/br.png" alt="Brasil">
+          <span id="home-name">Brasil</span>
+        </div>
+        <div class="score" id="score-display">0 - 0</div>
+        <div class="team">
+          <img id="away-flag" src="https://flagcdn.com/w80/ar.png" alt="Argentina">
+          <span id="away-name">Argentina</span>
+        </div>
+      </div>
+      <div class="match-info">
+        <span id="match-minute">Minuto: 0'</span> | <span id="match-status">Pré-jogo</span>
+      </div>
+    </section>
+
+    <section class="gameplay-card">
+      <div class="story-box">
+        <p id="scenario-text">Você está prestes a entrar em campo para o seu primeiro grande clássico pelas seleções. O técnico olha para você e pergunta se você está pronto.</p>
+      </div>
+
+      <div class="actions-box" id="choices-container">
         </div>
     </section>
 
-    <main class="container">
+    <section class="stats-card">
+      <h2>Estatísticas do Seu Jogador</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-value" id="stat-matches">0</span>
+          <span class="stat-label">Jogos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-goals">0</span>
+          <span class="stat-label">Gols</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-assists">0</span>
+          <span class="stat-label">Assistências</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-energy">100%</span>
+          <span class="stat-label">Energia</span>
+        </div>
+      </div>
+    </section>
 
-        <!-- Seção 1: Fisiologia do Ganho de Massa -->
-        <section id="fisiologia" class="content-section">
-            <h3 class="section-title">Fisiologia da Hipertrofia</h3>
-            <div class="grid-2">
-                <div class="card">
-                    <img src="https://unsplash.com" alt="Barra pesada carregada com anilhas de ferro no chão">
-                    <h4>Tensão Mecânica</h4>
-                    <p>O pilar principal do ganho de massa. Ocorre quando as fibras musculares são forçadas a produzir força contra uma carga pesada. Essa força de estiramento deforma as membranas das células musculares, ativando sensores químicos chamados mecanorreceptores que disparam o sinal de crescimento.</p>
-                </div>
-                <div class="card">
-                    <img src="https://unsplash.com" alt="Fisiculturista old school treinando braços intensamente">
-                    <h4>Síntese Proteica</h4>
-                    <p>A musculação quebra as proteínas velhas e ativa a via <strong>mTOR</strong>. Quando você consome proteínas após o treino de força, a taxa de síntese proteica supera a taxa de degradação. O resultado desse balanço nitrogenado positivo é a construção de novas miofibrilas e o aumento real do músculo.</p>
-                </div>
-            </div>
-        </section>
+  </main>
 
-        <!-- Seção 2: Biomecânica dos Braços -->
-        <section id="biomecanica" class="content-section inverse">
-            <h3 class="section-title">Funcionamento do Corpo: Articulação do Cotovelo</h3>
-            <p class="intro-text">O corpo funciona através de pares de músculos opostos (agonistas e antagonistas). O exemplo mais clássico de alavanca no corpo humano ocorre no braço.</p>
-            
-            <div class="grid-2">
-                <div class="bio-box">
-                    <h4>Flexão de Cotovelo (Bíceps)</h4>
-                    <ul>
-                        <li><strong>Músculo Ativado:</strong> Bíceps Braquial, Braquial e Braquiorradial.</li>
-                        <li><strong>Ação Mecânica:</strong> Aproximação do antebraço em direção ao braço.</li>
-                        <li><strong>Exercício Old School:</strong> Rosca Direta com Barra W ou Barra Reta pesada.</li>
-                    </ul>
-                </div>
-                <div class="bio-box">
-                    <h4>Extensão de Cotovelo (Tríceps)</h4>
-                    <ul>
-                        <li><strong>Músculo Ativado:</strong> Tríceps Braquial (Cabeças longa, lateral e medial).</li>
-                        <li><strong>Ação Mecânica:</strong> Afastamento do antebraço, estendendo o braço completamente.</li>
-                        <li><strong>Exercício Old School:</strong> Tríceps Testa ou Paralelas com peso corporal.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção 3: Melhores Divisões de Treino -->
-        <section id="treinos" class="content-section">
-            <h3 class="section-title">As Melhores Divisões de Treino Old School</h3>
-            
-            <div class="workout-grids">
-                <!-- Divisão 1 -->
-                <div class="workout-card">
-                    <h5>1. O Lendário Arnold Split (Alta Frequência)</h5>
-                    <p>Foco na sinergia clássica de antagonistas. Ótimo para pumps intensos.</p>
-                    <ol>
-                        <li><strong>Segunda / Quinta:</strong> Peito & Costas</li>
-                        <li><strong>Terça / Sexta:</strong> Ombros & Braços</li>
-                        <li><strong>Quarta / Sábado:</strong> Pernas Completas</li>
-                        <li><strong>Domingo:</strong> Descanso Total</li>
-                    </ol>
-                </div>
-
-                <!-- Divisão 2 -->
-                <div class="workout-card">
-                    <h5>2. Push / Pull / Legs (PPL Clássico)</h5>
-                    <p>Organizado pelos padrões de movimento do corpo. Excelente para recuperação celular.</p>
-                    <ol>
-                        <li><strong>Dia A (Push):</strong> Peito, Ombros e Tríceps</li>
-                        <li><strong>Dia B (Pull):</strong> Costas, Bíceps e Antebraço</li>
-                        <li><strong>Dia C (Legs):</strong> Quadríceps, Posteriores e Panturrilhas</li>
-                    </ol>
-                </div>
-
-                <!-- Divisão 3 -->
-                <div class="workout-card">
-                    <h5>3. Divisão ABCDE (Foco em Volume por Grupo)</h5>
-                    <p>Aniquilação total de um grupo muscular por dia. Ideal para atletas avançados.</p>
-                    <ol>
-                        <li><strong>Segunda:</strong> Peito e Panturrilha</li>
-                        <li><strong>Terça:</strong> Costas e Abdômen</li>
-                        <li><strong>Quarta:</strong> Pernas Completas (Foco Quadríceps)</li>
-                        <li><strong>Quinta:</strong> Ombros e Trapézio</li>
-                        <li><strong>Sexta:</strong> Braços Completos (Bíceps + Tríceps)</li>
-                    </ol>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2026 Iron Temple. Sem desculpas, apenas ferro pesado.</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
