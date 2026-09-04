@@ -3,205 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Career: Pro Football Manager & Player</title>
+    <title>SofaScore Pro - Live Scores & Estatísticas</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div id="setup-screen" class="screen active">
-        <div class="setup-container">
-            <div class="logo-area">
-                <i class="fa-solid fa-futbol fa-spin"></i>
-                <h1>ULTIMATE CAREER <span>PRO</span></h1>
-            </div>
-            <p class="subtitle">Construa sua lenda no futebol mundial</p>
-            
-            <div class="form-group">
-                <label><i class="fa-solid fa-user"></i> Nome do Jogador / Técnico</label>
-                <input type="text" id="manager-name" placeholder="Ex: Arthur Silva" value="Arthur Silva">
-            </div>
-
-            <div class="form-group">
-                <label><i class="fa-solid fa-shield-halved"></i> Escolha seu Clube</label>
-                <div class="team-selector">
-                    <div class="team-option selected" onclick="selectTeam('Real Madrid', 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg', 'Espanha')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid">
-                        <span>Real Madrid</span>
-                    </div>
-                    <div class="team-option" onclick="selectTeam('Manchester City', 'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg', 'Inglaterra')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Man City">
-                        <span>Man City</span>
-                    </div>
-                    <div class="team-option" onclick="selectTeam('FC Barcelona', 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg', 'Espanha')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" alt="Barcelona">
-                        <span>Barcelona</span>
-                    </div>
-                    <div class="team-option" onclick="selectTeam('Bayern München', 'https://upload.wikimedia.org/wikipedia/en/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg', 'Alemanha')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg" alt="Bayern">
-                        <span>Bayern</span>
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn-primary" onclick="startCareer()">INICIAR CARREIRA PROFISSIONAL <i class="fa-solid fa-arrow-right"></i></button>
+    <header class="sofa-header">
+        <div class="logo-area">
+            <div class="sofa-logo">SOFA<span>SCORE</span></div>
         </div>
-    </div>
+        <nav class="sofa-nav">
+            <button class="nav-item active" onclick="switchMainTab('matches')"><i class="fa-solid fa-futbol"></i> Jogos</button>
+            <button class="nav-item" onclick="switchMainTab('explore')"><i class="fa-solid fa-compass"></i> Explorar</button>
+        </nav>
+    </header>
 
-    <div id="career-screen" class="screen">
-        <header class="career-header">
-            <div class="user-info-box">
-                <img id="header-team-logo" src="" alt="Escudo">
-                <div>
-                    <h2 id="header-manager">Nome</h2>
-                    <p><span id="header-team-name">Time</span> | Nível <span id="header-level">1</span></p>
+    <main class="sofa-container">
+        
+        <div id="tab-matches" class="main-tab-content active">
+            <div class="date-bar">
+                <button class="date-btn"><i class="fa-solid fa-chevron-left"></i> Ontem</button>
+                <button class="date-btn active">Hoje</button>
+                <button class="date-btn">Amanhã <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+            <div class="tournament-group">
+                <div class="tournament-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="Premier League">
+                    <span>Inglaterra • Premier League</span>
                 </div>
-            </div>
-            <div class="career-stats-bar">
-                <div class="stat-badge"><i class="fa-solid fa-star"></i> Reputação: <span id="rep-val">50</span>%</div>
-                <div class="stat-badge"><i class="fa-solid fa-sack-dollar"></i> Salário: €<span id="sal-val">45.000</span>/sem</div>
-                <div class="stat-badge"><i class="fa-solid fa-trophy"></i> Troféus: <span id="trophy-val">0</span></div>
-            </div>
-        </header>
-
-        <div class="career-grid">
-            <div class="sidebar-menu">
-                <button class="menu-btn active" onclick="switchTab('hub')"><i class="fa-solid fa-house"></i> Hub Central</button>
-                <button class="menu-btn" onclick="switchTab('match')"><i class="fa-solid fa-futbol"></i> Jogar Partida</button>
-                <button class="menu-btn" onclick="switchTab('standings')"><i class="fa-solid fa-list-ol"></i> Tabela & Liga</button>
-                <button class="menu-btn" onclick="switchTab('stats')"><i class="fa-solid fa-chart-line"></i> Estatísticas</button>
-            </div>
-
-            <div class="content-area">
                 
-                <div id="tab-hub" class="tab-content active">
-                    <div class="news-banner">
-                        <div class="news-tag">ÚLTIMA HORA</div>
-                        <h3 id="news-headline">Especulações agitam o mercado de transferências para a nova temporada!</h3>
+                <div class="match-card live" onclick="openMatchDetail('match1')">
+                    <div class="match-status-col">
+                        <span class="live-badge pulse">AO VIVO</span>
+                        <span class="match-time">78'</span>
                     </div>
-                    <div class="hub-cards">
-                        <div class="card">
-                            <h3><i class="fa-solid fa-calendar-days"></i> Próximo Confronto</h3>
-                            <div class="next-match-box">
-                                <span id="nm-home">Time Casa</span>
-                                <b>VS</b>
-                                <span id="nm-away">Time Fora</span>
+                    <div class="match-teams-col">
+                        <div class="team-row">
+                            <div class="team-info">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Man City">
+                                <span>Manchester City</span>
                             </div>
-                            <button class="btn-action" onclick="switchTab('match')">Ir para Dia de Jogo</button>
+                            <span class="team-score">2</span>
                         </div>
-                        <div class="card">
-                            <h3><i class="fa-solid fa-bolt"></i> Condição Física & Moral</h3>
-                            <div class="progress-container">
-                                <label>Energia <span id="energy-txt">100%</span></label>
-                                <div class="progress-bar"><div id="energy-fill" style="width: 100%;"></div></div>
+                        <div class="team-row">
+                            <div class="team-info">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/c/c7/Arsenal_FC.svg" alt="Arsenal">
+                                <span>Arsenal</span>
                             </div>
-                            <div class="progress-container">
-                                <label>Moral da Equipe <span id="morale-txt">85%</span></label>
-                                <div class="progress-bar"><div id="morale-fill" style="width: 85%;"></div></div>
-                            </div>
+                            <span class="team-score">1</span>
                         </div>
                     </div>
                 </div>
 
-                <div id="tab-match" class="tab-content">
-                    <div class="matchday-wrapper">
-                        <div class="match-scoreboard">
-                            <div class="team-score-box">
-                                <img id="match-home-logo" src="" alt="">
-                                <h3 id="match-home-name">Casa</h3>
+                <div class="match-card finished" onclick="openMatchDetail('match2')">
+                    <div class="match-status-col">
+                        <span class="finished-badge">FIM</span>
+                    </div>
+                    <div class="match-teams-col">
+                        <div class="team-row">
+                            <div class="team-info">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid">
+                                <span>Real Madrid</span>
                             </div>
-                            <div class="score-display">
-                                <span id="score-home">0</span> : <span id="score-away">0</span>
-                                <div id="match-timer">00'</div>
+                            <span class="team-score">3</span>
+                        </div>
+                        <div class="team-row">
+                            <div class="team-info">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" alt="Barcelona">
+                                <span>Barcelona</span>
                             </div>
-                            <div class="team-score-box">
-                                <img id="match-away-logo" src="" alt="">
-                                <h3 id="match-away-name">Fora</h3>
-                            </div>
-                        </div>
-
-                        <div class="match-live-feed" id="live-feed">
-                            <div class="feed-item">Partida prestes a começar. Prepare suas táticas!</div>
-                        </div>
-
-                        <div id="decision-panel" class="decision-box hidden">
-                            <h4 id="decision-title"><i class="fa-solid fa-triangle-exclamation"></i> Situação Crítica em Campo!</h4>
-                            <p id="decision-desc">O adversário pressiona forte pela lateral. O que você ordena?</p>
-                            <div class="decision-buttons" id="decision-options">
-                                </div>
-                        </div>
-
-                        <div class="match-controls">
-                            <button id="start-match-btn" class="btn-primary" onclick="startMatchSimulation()">INICIAR PARTIDA</button>
+                            <span class="team-score">0</span>
                         </div>
                     </div>
                 </div>
-
-                <div id="tab-standings" class="tab-content">
-                    <h3>Classificação da Liga Principal</h3>
-                    <table class="pro-table">
-                        <thead>
-                            <tr>
-                                <th>Pos</th>
-                                <th>Clube</th>
-                                <th>J</th>
-                                <th>V</th>
-                                <th>E</th>
-                                <th>D</th>
-                                <th>SG</th>
-                                <th>Pts</th>
-                            </tr>
-                        </thead>
-                        <tbody id="standings-body">
-                            </tbody>
-                    </table>
-                </div>
-
-                <div id="tab-stats" class="tab-content">
-                    <h3>Painel de Desempenho Pessoal</h3>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <i class="fa-solid fa-bullseye"></i>
-                            <div>
-                                <h4 id="st-goals">0</h4>
-                                <p>Gols na Carreira</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fa-solid fa-handshake-angle"></i>
-                            <div>
-                                <h4 id="st-assists">0</h4>
-                                <p>Assistências</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fa-solid fa-shirt"></i>
-                            <div>
-                                <h4 id="st-matches">0</h4>
-                                <p>Partidas Disputadas</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <div>
-                                <h4 id="st-rating">7.0</h4>
-                                <p>Nota Média</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </div>
 
-    <div id="match-modal" class="modal">
-        <div class="modal-content">
-            <h2>Fim de Jogo!</h2>
-            <h3 id="modal-result-text">Vitória por 2x1</h3>
-            <p id="modal-details">Você marcou 1 gol e foi eleito o craque da partida.</p>
-            <button class="btn-primary" onclick="closeMatchModal()">Continuar Carreira</button>
+        <div id="tab-explore" class="main-tab-content">
+            <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> Jogadores em Destaque & Preços</h2>
+            <div class="player-market-grid">
+                <div class="market-card">
+                    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&q=80&w=200" alt="Jogador">
+                    <div>
+                        <h4>Erling Haaland</h4>
+                        <p>Manchester City • Ata</p>
+                        <span class="price-tag">€ 180.0M</span>
+                    </div>
+                </div>
+                <div class="market-card">
+                    <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&q=80&w=200" alt="Jogador">
+                    <div>
+                        <h4>Jude Bellingham</h4>
+                        <p>Real Madrid • Mei</p>
+                        <span class="price-tag">€ 180.0M</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="match-modal" class="sofa-modal">
+        <div class="modal-container">
+            <div class="modal-header-bar">
+                <h3>Detalhes da Partida</h3>
+                <button onclick="closeMatchDetail()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="match-tabs">
+                <button class="m-tab active" onclick="switchMatchTab('stats')">Estatísticas</button>
+                <button class="m-tab" onclick="switchMatchTab('ratings')">Notas dos Jogadores</button>
+            </div>
+
+            <div id="m-tab-stats" class="match-tab-content active">
+                <div class="stat-row-bar">
+                    <div class="stat-val">58%</div>
+                    <div class="stat-name">Posse de Bola</div>
+                    <div class="stat-val">42%</div>
+                </div>
+                <div class="stat-bar-container">
+                    <div class="bar-fill-left" style="width: 58%;"></div>
+                    <div class="bar-fill-right" style="width: 42%;"></div>
+                </div>
+
+                <div class="stat-row-bar">
+                    <div class="stat-val">7</div>
+                    <div class="stat-name">Finalizações no Gol</div>
+                    <div class="stat-val">4</div>
+                </div>
+                <div class="stat-bar-container">
+                    <div class="bar-fill-left" style="width: 64%;"></div>
+                    <div class="bar-fill-right" style="width: 36%;"></div>
+                </div>
+
+                <div class="stat-row-bar">
+                    <div class="stat-val">3</div>
+                    <div class="stat-name">Escanteios</div>
+                    <div class="stat-val">5</div>
+                </div>
+                <div class="stat-bar-container">
+                    <div class="bar-fill-left" style="width: 37%;"></div>
+                    <div class="bar-fill-right" style="width: 63%;"></div>
+                </div>
+            </div>
+
+            <div id="m-tab-ratings" class="match-tab-content">
+                <div class="ratings-team-title">Manchester City (Titulares)</div>
+                <div class="player-rate-row">
+                    <span class="p-pos">G</span>
+                    <span class="p-name">Ederson</span>
+                    <span class="p-rate rating-good">7.4</span>
+                </div>
+                <div class="player-rate-row">
+                    <span class="p-pos">A</span>
+                    <span class="p-name">Erling Haaland (Gol)</span>
+                    <span class="p-rate rating-best">8.9</span>
+                </div>
+                <div class="player-rate-row">
+                    <span class="p-pos">M</span>
+                    <span class="p-name">Kevin De Bruyne (Assistência)</span>
+                    <span class="p-rate rating-best">9.1</span>
+                </div>
+
+                <div class="ratings-team-title" style="margin-top: 15px;">Arsenal (Titulares)</div>
+                <div class="player-rate-row">
+                    <span class="p-pos">G</span>
+                    <span class="p-name">David Raya</span>
+                    <span class="p-rate rating-good">7.0</span>
+                </div>
+                <div class="player-rate-row">
+                    <span class="p-pos">A</span>
+                    <span class="p-name">Bukayo Saka</span>
+                    <span class="p-rate rating-bad">6.2</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
