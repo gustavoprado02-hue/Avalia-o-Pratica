@@ -1,186 +1,179 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SofaScore Pro - Live Scores & Estatísticas</title>
+    <title>SofaScore Pro Analytics & FC27 Hub</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header class="sofa-header">
-        <div class="logo-area">
-            <div class="sofa-logo">SOFA<span>SCORE</span></div>
+    <header>
+        <div class="logo-box">
+            <i class="fa-solid fa-earth-americas"></i>
+            <h1>SOFASCORE <span>PRO</span></h1>
         </div>
-        <nav class="sofa-nav">
-            <button class="nav-item active" onclick="switchMainTab('matches')"><i class="fa-solid fa-futbol"></i> Jogos</button>
-            <button class="nav-item" onclick="switchMainTab('explore')"><i class="fa-solid fa-compass"></i> Explorar</button>
+        <nav class="nav-menu">
+            <button class="nav-btn active" onclick="switchView('overview', this)"><i class="fa-solid fa-house"></i> <span>Início</span></button>
+            <button class="nav-btn" onclick="switchView('global-stats', this)"><i class="fa-solid fa-globe"></i> <span>Estatísticas Globais</span></button>
+            <button class="nav-btn" onclick="switchView('fc27-hub', this)"><i class="fa-solid fa-gamepad"></i> <span>FC27 Overalls</span></button>
+            <button class="nav-btn" onclick="switchView('candidates', this)"><i class="fa-solid fa-trophy"></i> <span>Favoritos a Títulos</span></button>
         </nav>
+        <div class="header-actions">
+            <button class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
+        </div>
     </header>
 
-    <main class="sofa-container">
-        
-        <div id="tab-matches" class="main-tab-content active">
-            <div class="date-bar">
-                <button class="date-btn"><i class="fa-solid fa-chevron-left"></i> Ontem</button>
-                <button class="date-btn active">Hoje</button>
-                <button class="date-btn">Amanhã <i class="fa-solid fa-chevron-right"></i></button>
+    <div class="container">
+
+        <!-- VISÃO GERAL -->
+        <div id="view-overview" class="section-view active">
+            <h2 class="page-title"><i class="fa-solid fa-chart-pie"></i> Painel Analítico Global</h2>
+            <div class="grid-2">
+                <div class="pro-card">
+                    <h3>Destaque do Planeta</h3>
+                    <p style="color: var(--text-muted); margin: 10px 0 20px 0; font-size: 0.9rem;">O atleta com maior índice de rating e impacto tático acumulado nas principais ligas europeias.</p>
+                    <div style="display: flex; align-items: center; gap: 15px; background: var(--bg-main); padding: 15px; border-radius: 10px; cursor: pointer;" onclick="openPlayerModal(0)">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&q=80&w=200" style="width:50px; height:50px; border-radius:50%; object-fit:cover;" alt="Haaland">
+                        <div>
+                            <h4>Erling Haaland</h4>
+                            <p style="font-size:0.8rem; color: var(--text-muted);">Manchester City • Atacante</p>
+                        </div>
+                        <span class="rating-badge" style="margin-left: auto;">9.24</span>
+                    </div>
+                </div>
+                <div class="pro-card">
+                    <h3>Atualizações FC27 Recentes</h3>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 10px; font-size: 0.9rem;">
+                        <li style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+                            <span>Jude Bellingham (Real Madrid)</span> <b>OVR 92 (+1)</b>
+                        </li>
+                        <li style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+                            <span>Kylian Mbappé (Real Madrid)</span> <b>OVR 93 (Base)</b>
+                        </li>
+                        <li style="display: flex; justify-content: space-between;">
+                            <span>Lamine Yamal (FC Barcelona)</span> <b>OVR 88 (+5)</b>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </div>
 
-            <div class="tournament-group">
-                <div class="tournament-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="Premier League">
-                    <span>Inglaterra • Premier League</span>
-                </div>
-                
-                <div class="match-card live" onclick="openMatchDetail('match1')">
-                    <div class="match-status-col">
-                        <span class="live-badge pulse">AO VIVO</span>
-                        <span class="match-time">78'</span>
-                    </div>
-                    <div class="match-teams-col">
-                        <div class="team-row">
-                            <div class="team-info">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Man City">
-                                <span>Manchester City</span>
-                            </div>
-                            <span class="team-score">2</span>
-                        </div>
-                        <div class="team-row">
-                            <div class="team-info">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/c/c7/Arsenal_FC.svg" alt="Arsenal">
-                                <span>Arsenal</span>
-                            </div>
-                            <span class="team-score">1</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- ESTATÍSTICAS GLOBAIS DE TODOS OS JOGADORES DO PLANETA -->
+        <div id="view-global-stats" class="section-view">
+            <h2 class="page-title"><i class="fa-solid fa-globe"></i> Banco de Dados Global de Jogadores</h2>
+            <div class="search-bar-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="player-search" placeholder="Busque por qualquer jogador do planeta (Ex: Vinicius Jr, Rodri, De Bruyne)..." onkeyup="filterPlayers()">
+            </div>
+            <table class="players-table">
+                <thead>
+                    <tr>
+                        <th>Jogador</th>
+                        <th>Clube / Liga</th>
+                        <th>Posição</th>
+                        <th>Gols / Assis</th>
+                        <th>Valor de Mercado</th>
+                        <th>Rating Global</th>
+                    </tr>
+                </thead>
+                <tbody id="players-table-body">
+                    <!-- Preenchido dinamicamente via JS -->
+                </tbody>
+            </table>
+        </div>
 
-                <div class="match-card finished" onclick="openMatchDetail('match2')">
-                    <div class="match-status-col">
-                        <span class="finished-badge">FIM</span>
+        <!-- OVERALLS DOS JOGADORES DO FC27 -->
+        <div id="view-fc27-hub" class="section-view">
+            <h2 class="page-title"><i class="fa-solid fa-gamepad"></i> Overalls Oficiais FC27</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem;">Simulação avançada de atributos e avaliações oficiais para a nova temporada do EA Sports FC 27.</p>
+            <div class="fc27-card-grid" id="fc27-grid">
+                <!-- Preenchido dinamicamente via JS -->
+            </div>
+        </div>
+
+        <!-- CANDIDATOS AOS PRINCIPAIS TÍTULOS -->
+        <div id="view-candidates" class="section-view">
+            <h2 class="page-title"><i class="fa-solid fa-trophy"></i> Favoritos e Candidatos aos Principais Títulos</h2>
+            <div class="grid-2">
+                <div>
+                    <h3 style="margin-bottom: 15px; font-size: 1.1rem; color: var(--text-muted);">Liga dos Campeões (UCL)</h3>
+                    <div class="title-candidate-box">
+                        <div class="candidate-info">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid">
+                            <div>
+                                <h4>Real Madrid</h4>
+                                <p style="font-size:0.8rem; color: var(--text-muted);">Espanha • 15 Títulos</p>
+                            </div>
+                        </div>
+                        <span class="odds-badge">Favorito #1 (32%)</span>
                     </div>
-                    <div class="match-teams-col">
-                        <div class="team-row">
-                            <div class="team-info">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid">
-                                <span>Real Madrid</span>
+                    <div class="title-candidate-box">
+                        <div class="candidate-info">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Man City">
+                            <div>
+                                <h4>Manchester City</h4>
+                                <p style="font-size:0.8rem; color: var(--text-muted);">Inglaterra • Atual Potência</p>
                             </div>
-                            <span class="team-score">3</span>
                         </div>
-                        <div class="team-row">
-                            <div class="team-info">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" alt="Barcelona">
-                                <span>Barcelona</span>
+                        <span class="odds-badge">Favorito #2 (28%)</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 15px; font-size: 1.1rem; color: var(--text-muted);">Copas Nacionais & Ligas</h3>
+                    <div class="title-candidate-box">
+                        <div class="candidate-info">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" alt="Barcelona">
+                            <div>
+                                <h4>FC Barcelona</h4>
+                                <p style="font-size:0.8rem; color: var(--text-muted);">La Liga • Nova Geração</p>
                             </div>
-                            <span class="team-score">0</span>
                         </div>
+                        <span class="odds-badge">Candidato Sólido</span>
+                    </div>
+                    <div class="title-candidate-box">
+                        <div class="candidate-info">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg" alt="Bayern">
+                            <div>
+                                <h4>Bayern München</h4>
+                                <p style="font-size:0.8rem; color: var(--text-muted);">Alemanha • Hegemonia</p>
+                            </div>
+                        </div>
+                        <span class="odds-badge">Candidato Sólido</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="tab-explore" class="main-tab-content">
-            <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> Jogadores em Destaque & Preços</h2>
-            <div class="player-market-grid">
-                <div class="market-card">
-                    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&q=80&w=200" alt="Jogador">
-                    <div>
-                        <h4>Erling Haaland</h4>
-                        <p>Manchester City • Ata</p>
-                        <span class="price-tag">€ 180.0M</span>
-                    </div>
-                </div>
-                <div class="market-card">
-                    <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&q=80&w=200" alt="Jogador">
-                    <div>
-                        <h4>Jude Bellingham</h4>
-                        <p>Real Madrid • Mei</p>
-                        <span class="price-tag">€ 180.0M</span>
-                    </div>
+    </div>
+
+    <!-- LOCAL DINÂMICO: MODAL DE DETALHES DO JOGADOR -->
+    <div id="player-modal" class="dynamic-modal">
+        <div class="modal-body">
+            <button class="close-modal" onclick="closePlayerModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="player-modal-header">
+                <img id="modal-img" src="" alt="Jogador">
+                <div>
+                    <h2 id="modal-name">Nome do Jogador</h2>
+                    <p id="modal-team" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">Time • Posição</p>
                 </div>
             </div>
-        </div>
-
-    </main>
-
-    <div id="match-modal" class="sofa-modal">
-        <div class="modal-container">
-            <div class="modal-header-bar">
-                <h3>Detalhes da Partida</h3>
-                <button onclick="closeMatchDetail()"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <div class="match-tabs">
-                <button class="m-tab active" onclick="switchMatchTab('stats')">Estatísticas</button>
-                <button class="m-tab" onclick="switchMatchTab('ratings')">Notas dos Jogadores</button>
-            </div>
-
-            <div id="m-tab-stats" class="match-tab-content active">
-                <div class="stat-row-bar">
-                    <div class="stat-val">58%</div>
-                    <div class="stat-name">Posse de Bola</div>
-                    <div class="stat-val">42%</div>
+            <div class="stats-grid-modal">
+                <div class="stat-box-item">
+                    <h4 id="modal-rating">9.1</h4>
+                    <p>Rating Médio</p>
                 </div>
-                <div class="stat-bar-container">
-                    <div class="bar-fill-left" style="width: 58%;"></div>
-                    <div class="bar-fill-right" style="width: 42%;"></div>
+                <div class="stat-box-item">
+                    <h4 id="modal-market">€ 180M</h4>
+                    <p>Valor de Mercado</p>
                 </div>
-
-                <div class="stat-row-bar">
-                    <div class="stat-val">7</div>
-                    <div class="stat-name">Finalizações no Gol</div>
-                    <div class="stat-val">4</div>
-                </div>
-                <div class="stat-bar-container">
-                    <div class="bar-fill-left" style="width: 64%;"></div>
-                    <div class="bar-fill-right" style="width: 36%;"></div>
-                </div>
-
-                <div class="stat-row-bar">
-                    <div class="stat-val">3</div>
-                    <div class="stat-name">Escanteios</div>
-                    <div class="stat-val">5</div>
-                </div>
-                <div class="stat-bar-container">
-                    <div class="bar-fill-left" style="width: 37%;"></div>
-                    <div class="bar-fill-right" style="width: 63%;"></div>
+                <div class="stat-box-item">
+                    <h4 id="modal-ovr">92</h4>
+                    <p>Overall FC27</p>
                 </div>
             </div>
-
-            <div id="m-tab-ratings" class="match-tab-content">
-                <div class="ratings-team-title">Manchester City (Titulares)</div>
-                <div class="player-rate-row">
-                    <span class="p-pos">G</span>
-                    <span class="p-name">Ederson</span>
-                    <span class="p-rate rating-good">7.4</span>
-                </div>
-                <div class="player-rate-row">
-                    <span class="p-pos">A</span>
-                    <span class="p-name">Erling Haaland (Gol)</span>
-                    <span class="p-rate rating-best">8.9</span>
-                </div>
-                <div class="player-rate-row">
-                    <span class="p-pos">M</span>
-                    <span class="p-name">Kevin De Bruyne (Assistência)</span>
-                    <span class="p-rate rating-best">9.1</span>
-                </div>
-
-                <div class="ratings-team-title" style="margin-top: 15px;">Arsenal (Titulares)</div>
-                <div class="player-rate-row">
-                    <span class="p-pos">G</span>
-                    <span class="p-name">David Raya</span>
-                    <span class="p-rate rating-good">7.0</span>
-                </div>
-                <div class="player-rate-row">
-                    <span class="p-pos">A</span>
-                    <span class="p-name">Bukayo Saka</span>
-                    <span class="p-rate rating-bad">6.2</span>
-                </div>
-            </div>
-
         </div>
     </div>
 
