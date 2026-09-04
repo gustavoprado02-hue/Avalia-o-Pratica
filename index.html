@@ -3,65 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modo Carreira - Futebol Text Game</title>
+  <title>Copero Career - Modo Carreira Realista</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-mode">
 
   <header>
-    <h1>Modo Carreira Pro</h1>
-    <p>Tome as decisões certas para virar uma lenda do futebol!</p>
+    <div class="header-content">
+      <h1>COPERO CAREER</h1>
+      <button id="theme-toggle" class="btn-theme">☀️ Modo Claro</button>
+    </div>
   </header>
 
   <main class="container">
-    
-    <section class="match-card">
-      <div class="scoreboard">
-        <div class="team">
-          <img id="home-flag" src="https://flagcdn.com/w80/br.png" alt="Brasil">
-          <span id="home-name">Brasil</span>
-        </div>
-        <div class="score" id="score-display">0 - 0</div>
-        <div class="team">
-          <img id="away-flag" src="https://flagcdn.com/w80/ar.png" alt="Argentina">
-          <span id="away-name">Argentina</span>
-        </div>
-      </div>
-      <div class="match-info">
-        <span id="match-minute">Minuto: 0'</span> | <span id="match-status">Pré-jogo</span>
-      </div>
-    </section>
 
-    <section class="gameplay-card">
-      <div class="story-box">
-        <p id="scenario-text">Você está prestes a entrar em campo para o seu primeiro grande clássico pelas seleções. O técnico olha para você e pergunta se você está pronto.</p>
+    <section id="setup-card" class="card">
+      <h2>Configurar Carreira</h2>
+      <div class="form-group">
+        <label for="player-name">Nome do Jogador:</label>
+        <input type="text" id="player-name" value="Craque" placeholder="Seu nome">
       </div>
 
-      <div class="actions-box" id="choices-container">
-        </div>
+      <div class="form-group">
+        <label for="user-team-select">Seu Time/Seleção:</label>
+        <select id="user-team-select"></select>
+      </div>
+
+      <div class="form-group">
+        <label for="rival-team-select">Adversário:</label>
+        <select id="rival-team-select"></select>
+      </div>
+
+      <button id="start-game-btn" class="btn-action primary">Iniciar Partida</button>
     </section>
 
-    <section class="stats-card">
-      <h2>Estatísticas do Seu Jogador</h2>
-      <div class="stats-grid">
-        <div class="stat-item">
-          <span class="stat-value" id="stat-matches">0</span>
-          <span class="stat-label">Jogos</span>
+    <div id="game-screen" class="hidden">
+      
+      <section class="card match-card">
+        <div class="scoreboard">
+          <div class="team">
+            <img id="home-flag" src="" alt="Time Casa">
+            <span id="home-name">Casa</span>
+          </div>
+          <div class="score" id="score-display">0 - 0</div>
+          <div class="team">
+            <img id="away-flag" src="" alt="Time Fora">
+            <span id="away-name">Fora</span>
+          </div>
         </div>
-        <div class="stat-item">
-          <span class="stat-value" id="stat-goals">0</span>
-          <span class="stat-label">Gols</span>
+        <div class="match-info">
+          <span id="match-minute">0'</span> | <span id="match-status">1º Tempo</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-value" id="stat-assists">0</span>
-          <span class="stat-label">Assistências</span>
+      </section>
+
+      <section class="card gameplay-card">
+        <div class="story-box">
+          <p id="scenario-text">A partida está prestes a começar!</p>
         </div>
-        <div class="stat-item">
-          <span class="stat-value" id="stat-energy">100%</span>
-          <span class="stat-label">Energia</span>
+        <div class="actions-box" id="choices-container">
+          </div>
+      </section>
+
+      <section class="card stats-card">
+        <h3>Estatísticas do Atleta</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-value" id="stat-matches">0</span>
+            <span class="stat-label">Jogos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="stat-goals">0</span>
+            <span class="stat-label">Gols</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="stat-assists">0</span>
+            <span class="stat-label">Assistências</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="stat-stamina">100%</span>
+            <span class="stat-label">Stamina</span>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+    </div>
 
   </main>
 
